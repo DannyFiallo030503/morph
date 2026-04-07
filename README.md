@@ -1,13 +1,12 @@
-```markdown
 # 🎮 Morph — Modular web game engine
 
 ## 1. Project philosophy
 
 **Creating games for the web should be fast, reusable, and not repetitive.**
 
-When you develop games directly with HTML, CSS, and JS, each new game forces you to rewrite the same foundations: main loop, input handling, rendering, collisions… It’s tedious and error-prone. Existing tools are powerful (Phaser, Babylon, Three.js), but often have steep learning curves or don’t easily adapt to different genres without a lot of boilerplate code.
+When you develop games directly with HTML, CSS, and JS, each new game forces you to rewrite the same foundations: main loop, input handling, rendering, collisions… It's tedious and error-prone. Existing tools are powerful (Phaser, Babylon, Three.js), but often have steep learning curves or don't easily adapt to different genres without a lot of boilerplate code.
 
-**Morph** is born to fill that gap. It’s not a monolithic engine, but a **common base (Core) + interchangeable modules + predefined collections (presets)** that let you create anything from a 2D platformer to an isometric open world, or a soul-like, writing only your game’s unique logic.
+**Morph** is born to fill that gap. It's not a monolithic engine, but a **common base (Core) + interchangeable modules + predefined collections (presets)** that let you create anything from a 2D platformer to an isometric open world, or a soul-like, writing only your game's unique logic.
 
 ### Key principles
 
@@ -67,16 +66,16 @@ A module is a JS file (or class) that **extends or modifies** the Core. Each mod
 
 **Example modules**
 
-| Module        | Function                                                                 |
-|---------------|--------------------------------------------------------------------------|
-| tile-engine   | Load and render tile maps (JSON / CSV).                                  |
-| physics-2d    | AABB collisions, gravity, ground detection.                              |
-| camera-2d     | Follow an entity, zoom, boundaries.                                      |
-| isometric     | Convert Cartesian to isometric coordinates, render 45° tiles.            |
-| procedural    | World generation with Perlin/Simplex noise, biomes, height.              |
-| soul-combat   | Combat system with i‑frames, stamina, parry, bonfire respawn.            |
-| open-world    | Chunk streaming, lazy region loading, entity LOD.                        |
-| particles     | Configurable particle systems.                                           |
+| Module      | Function                                                            |
+|-------------|---------------------------------------------------------------------|
+| tile-engine | Load and render tile maps (JSON / CSV).                             |
+| physics-2d  | AABB collisions, gravity, ground detection.                         |
+| camera-2d   | Follow an entity, zoom, boundaries.                                 |
+| isometric   | Convert Cartesian to isometric coordinates, render 45° tiles.       |
+| procedural  | World generation with Perlin/Simplex noise, biomes, height.         |
+| soul-combat | Combat system with i‑frames, stamina, parry, bonfire respawn.       |
+| open-world  | Chunk streaming, lazy region loading, entity LOD.                   |
+| particles   | Configurable particle systems.                                      |
 
 A module can **depend on another module** (e.g. `isometric` needs `tile-engine`).
 
@@ -90,12 +89,12 @@ A preset is a set of preconfigured modules for a genre or style. When you apply 
 
 **Example presets**
 
-| Preset            | Included modules                                         | Typical configuration                         |
-|-------------------|----------------------------------------------------------|-----------------------------------------------|
-| Platformer        | `physics-2d`, `tile-engine`, `camera-2d`, `particles`    | Gravity -9.8, 16x16 tiles, side camera        |
-| Turn‑based RPG    | `tile-engine`, `ui-menus`, `turn-queue`, `save-system`   | 32x32 grid, turn combat, local save           |
-| Soul‑like         | `soul-combat`, `checkpoints`, `isometric`, `enemy-ai`    | Stamina, i‑frames, respawn, aggressive AI     |
-| Open world        | `procedural`, `open-world`, `inventory`, `day-night`     | 64x64 chunks, biomes, day/night cycle         |
+| Preset         | Included modules                                        | Typical configuration                       |
+|----------------|---------------------------------------------------------|---------------------------------------------|
+| Platformer     | `physics-2d`, `tile-engine`, `camera-2d`, `particles`   | Gravity -9.8, 16×16 tiles, side camera      |
+| Turn‑based RPG | `tile-engine`, `ui-menus`, `turn-queue`, `save-system`  | 32×32 grid, turn combat, local save         |
+| Soul‑like      | `soul-combat`, `checkpoints`, `isometric`, `enemy-ai`   | Stamina, i‑frames, respawn, aggressive AI   |
+| Open world     | `procedural`, `open-world`, `inventory`, `day-night`    | 64×64 chunks, biomes, day/night cycle       |
 
 You can **modify any preset** (change gravity, disable modules, add others). Presets are just shortcuts.
 
@@ -158,7 +157,7 @@ export default {
 Then load it:
 
 ```javascript
-game.use(myModule, { options: ... });
+game.use(myModule, { options: '...' });
 ```
 
 ### 4.2 Modify an existing preset
@@ -176,7 +175,7 @@ game.loadPreset('soul-like', {
 
 ### 4.3 Using the Core as a standalone library
 
-You can use Morph’s Core without any modules and build everything manually. Modules are optional convenience layers.
+You can use Morph's Core without any modules and build everything manually. Modules are optional convenience layers.
 
 ---
 
@@ -218,7 +217,7 @@ The mini‑game will be playable directly by opening `index.html`. It will serve
 ## 7. Frequently asked questions (conceptual)
 
 **Can I make real 3D (WebGL) games with Morph?**
-Yes, via a `renderer-3d` module that implements the same interface as the 2D renderer. The Core doesn’t distinguish between 2D and 3D — only entities with position and components.
+Yes, via a `renderer-3d` module that implements the same interface as the 2D renderer. The Core doesn't distinguish between 2D and 3D — only entities with position and components.
 
 **How does performance scale with many modules?**
 Only the code of loaded modules runs. Additionally, each module can enable/disable its logic at runtime (e.g. disable physics in menus).
@@ -227,7 +226,7 @@ Only the code of loaded modules runs. Additionally, each module can enable/disab
 Morph is not a no‑code tool; it targets web developers who want to speed up their workflow. However, presets drastically reduce the amount of code needed.
 
 **Can I export to mobile (Cordova, Capacitor)?**
-Yes, because it’s pure HTML/JS, it runs inside a WebView without changes. The Core already handles touch events.
+Yes, because it's pure HTML/JS, it runs inside a WebView without changes. The Core already handles touch events.
 
 ---
 
@@ -236,15 +235,3 @@ Yes, because it’s pure HTML/JS, it runs inside a WebView without changes. The 
 Morph does not aim to compete with AAA engines. Instead, it offers an agile and modular base for web creators tired of rewriting the same things. Its superpower is the collection of modules and presets, allowing you to switch genres without discarding previous work.
 
 The repository will be public, under the **MIT license**, so anyone can use it, modify it, or create their own modules. The example mini‑game will prove that the idea works in practice.
-```
-
----
-
-### Notas finales
-- He cerrado correctamente los bloques de código y mejorado la consistencia de las tablas y listas.
-- Si quieres, puedo:
-  - Añadir una **tabla de contenidos** con enlaces a secciones.
-  - Generar un **badge** de licencia MIT y un ejemplo `index.html` mínimo.
-  - Convertir las tablas a HTML si prefieres compatibilidad total con algunos renderers.
-
-¿Quieres que añada la tabla de contenidos y el badge de licencia ahora?
