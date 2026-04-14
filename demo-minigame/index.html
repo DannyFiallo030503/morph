@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Morph Core Demo - Collect the Stars</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas" width="800" height="600"></canvas>
+        <div id="ui">
+            <p>Score: <span id="score">0</span></p>
+            <p>Use WASD or arrow keys to move the blue square. Collect the red stars! Avoid the bouncing orange enemies.</p>
+            <div id="game-over" style="display: none;">
+                <h2>Game Over</h2>
+                <p>Final score: <span id="final-score">0</span></p>
+                <p>Press <kbd>R</kbd> to restart</p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
